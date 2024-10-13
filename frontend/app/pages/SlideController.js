@@ -47,7 +47,7 @@ export const SlideController = {
           .post-image {
             overflow: hidden;
             width: 100%;
-            max-height: 50vh;
+            height: 39rem;
 
             &.lazy {
               background: linear-gradient(90deg, rgba(255, 255, 255, 0.25) 25%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.25) 75%);
@@ -57,7 +57,7 @@ export const SlideController = {
 
             img {
               width: 100%;
-              height: 75vh;
+              height: 100%;
               aspect-ratio: 9/16;
               object-fit: cover;
               transition: 1s;
