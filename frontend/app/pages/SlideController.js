@@ -47,7 +47,7 @@ export const SlideController = {
           .post-image {
             overflow: hidden;
             width: 100%;
-            height: 39rem;
+            height: 25rem;
 
             &.lazy {
               background: linear-gradient(90deg, rgba(255, 255, 255, 0.25) 25%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.25) 75%);
