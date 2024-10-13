@@ -14,7 +14,7 @@ export const SlideController = {
 
     this.next = function (opt) {
       const user_post_uuid = this.post.user_post_uuid;
-      this.post = null;
+      this.post = undefined;
       this.apply();
       nextSlide(user_post_uuid, opt).then((post) => {
         this.post = post;
