@@ -1,0 +1,19 @@
+{
+  "name": "InstaWEEN",
+  "short_name": "InstaWEEN",
+  "theme_color": "#000",
+  "background_color": "#fff",
+  "display": "standalone",
+  "orientation": "any",
+  "scope": "./",
+  "id": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "./assets/img/icon.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}
