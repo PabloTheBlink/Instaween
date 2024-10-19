@@ -17,14 +17,14 @@ export const HeaderComponent = {
       this.apply();
     });
 
-    this.checkScroll = function () {
+    /*this.checkScroll = function () {
       document.querySelector("header").style.top = document.documentElement.scrollTop > 100 ? "-4rem" : "0";
     };
 
     setTimeout(() => {
       window.addEventListener("scroll", () => this.checkScroll());
       this.checkScroll();
-    });
+    });*/
   },
 
   render: function () {

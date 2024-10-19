@@ -5,8 +5,21 @@ import { getHeaders } from "./AuthService.js";
 
 const SERVICE_URL = `${API_URL}/post`;
 
-export function getFeed() {
-  return fetch(`${SERVICE_URL}/feed`, { headers: getHeaders() })
+export function getFeed(limit = 10) {
+  return fetch(`${SERVICE_URL}/feed?limit=${limit}`, { headers: getHeaders() })
+    .then((r) => {
+      if (!r.ok) {
+        throw new Error(r.statusText);
+      }
+      return r.json();
+    })
+    .catch((e) => {
+      Alert(e.message || "An error occurred", { autohide: 2500 });
+    });
+}
+
+export function getPost(post_uuid) {
+  return fetch(`${SERVICE_URL}/post/${post_uuid}`, { headers: getHeaders() })
     .then((r) => {
       if (!r.ok) {
         throw new Error(r.statusText);

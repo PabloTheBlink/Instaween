@@ -19,7 +19,13 @@ class PostController
 
     public function getFeed(Request $request): Response
     {
-        return ApiResponse::ok(UserPost::orderBy("created_at", "desc")->limit(10)->get());
+        $limit = isset($_GET["limit"]) ? intval($_GET["limit"]) : 10;
+        return ApiResponse::ok(UserPost::orderBy("created_at", "desc")->limit($limit)->get());
+    }
+
+    public function getPost(Request $request, Response $response, array $args): Response
+    {
+        return ApiResponse::ok(UserPost::find($args["post_uuid"]));
     }
 
     public function getSlide(Request $request): Response

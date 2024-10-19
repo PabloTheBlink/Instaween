@@ -1,6 +1,7 @@
 import { Router } from "../../assets/js/ScopeJS.min.js";
 import { ExploreController } from "../pages/ExploreController.js";
 import { HomeController } from "../pages/HomeController.js";
+import { PostController } from "../pages/PostController.js";
 import { ProfileController } from "../pages/ProfileController.js";
 import { SlideController } from "../pages/SlideController.js";
 
@@ -9,6 +10,11 @@ export const router = Router(
     {
       path: "/",
       controller: HomeController,
+      alias: "home",
+    },
+    {
+      path: "/post/:post_uuid",
+      controller: PostController,
       alias: "home",
     },
     {
@@ -28,6 +34,6 @@ export const router = Router(
     },
   ],
   {
-    useHash: false,
+    useHash: true,
   }
 );

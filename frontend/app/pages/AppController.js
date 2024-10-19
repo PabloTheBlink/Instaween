@@ -49,14 +49,11 @@ export const AppController = {
                 <i class="fa fa-home"></i>
                 <span>Inicio</span>
               </a>
-              <a onclick="goTo('/slide')" ${router.alias == "slide" ? " class='active'" : ""}>
-                <i class="fa fa-heart"></i>
-                <span>Valora</span>
-              </a>
               <a onclick="goTo('/explore')" ${router.alias == "explore" ? " class='active'" : ""}>
                 <i class="fa fa-search"></i>
                 <span>Explorar</span>
               </a>
+              <div style="flex: 1"></div>
               <a ${current_user.get() ? /* HTML */ `onclick="goTo('/profile/${current_user.get().user_uuid}')"` : ``} ${router.alias == "profile" ? " class='active'" : ""}>
                 <i class="fa fa-user"></i>
                 <span>Perfil</span>
@@ -64,7 +61,6 @@ export const AppController = {
             </div>
           </div>
           <div class="content" id="content"></div>
-          <div class="sidebar sidebar-right"></div>
         </div>
       </main>
 
@@ -76,9 +72,7 @@ export const AppController = {
             <a onclick="goTo('/')" ${router.alias == "home" ? " class='active'" : ""}>
               <i class="fa fa-home"></i>
             </a>
-            <a onclick="goTo('/slide')" ${router.alias == "slide" ? " class='active'" : ""}>
-              <i class="fa fa-heart"></i>
-            </a>
+            <span></span>
             <a class="center" onclick="uploadImage()">
               <i class="fa fa-plus"></i>
             </a>

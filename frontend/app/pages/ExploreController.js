@@ -1,6 +1,45 @@
+import { Event } from "../../assets/js/EventJS.min.js";
+import { getFeed } from "../services/PostService.js";
+
 export const ExploreController = {
-  controller: function () {},
+  controller: function () {
+    this.posts = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+
+    this.getFeed = function () {
+      getFeed(100).then((posts) => {
+        this.posts = posts;
+        this.apply();
+      });
+    };
+
+    const event = Event.listen("post", () => this.getFeed());
+
+    this.onDestroy = function () {
+      Event.unlisten(event);
+    };
+
+    this.getFeed();
+  },
   render: function () {
-    return /* HTML */ ` <header-component></header-component> `;
+    return /* HTML */ `
+      ${!this.posts.length
+        ? /* HTML */ `<div class="content-center">
+            <i class="fa fa-sad-tear"></i>
+            <span>No hay posts</span>
+          </div>`
+        : /* HTML */ `
+            <div class="posts-grid">
+              ${this.posts
+                .map(
+                  (post, index) => /* HTML */ `
+                    <div id="${post?.user_post_uuid || `post_${index}`}" class="post">
+                      <img lazy src="${post?.image || ""}" class="post-image" />
+                    </div>
+                  `
+                )
+                .join("")}
+            </div>
+          `}
+    `;
   },
 };
