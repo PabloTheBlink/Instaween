@@ -31,28 +31,8 @@ export function getPost(post_uuid) {
     });
 }
 
-export function getSlide() {
-  return fetch(`${SERVICE_URL}/slide`, { headers: getHeaders() })
-    .then((r) => {
-      if (!r.ok) {
-        throw new Error(r.statusText);
-      }
-      return r.json();
-    })
-    .catch((e) => {
-      Alert(e.message || "An error occurred", { autohide: 2500 });
-    });
-}
-
-export function nextSlide(user_post_uuid, opt) {
-  return fetch(`${SERVICE_URL}/slide`, {
-    headers: getHeaders(),
-    method: "POST",
-    body: JSON.stringify({
-      user_post_uuid,
-      opt,
-    }),
-  })
+export function getMyPosts() {
+  return fetch(`${SERVICE_URL}/post`, { headers: getHeaders() })
     .then((r) => {
       if (!r.ok) {
         throw new Error(r.statusText);

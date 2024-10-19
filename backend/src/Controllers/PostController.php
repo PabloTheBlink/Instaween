@@ -28,21 +28,12 @@ class PostController
         return ApiResponse::ok(UserPost::find($args["post_uuid"]));
     }
 
-    public function getSlide(Request $request): Response
+    public function getMyPosts(Request $request, Response $response, array $args): Response
     {
         $bearerToken = $request->getHeaderLine("Authorization");
         $user_token = UserToken::where("token", str_replace("Bearer ", "", $bearerToken))->first();
 
-        $post = UserPost::leftJoin('user_post_like', function ($join) use ($user_token) {
-            $join->on('user_post.user_post_uuid', '=', 'user_post_like.user_post_uuid')
-                ->where('user_post_like.user_uuid', '=', $user_token->user_uuid);
-        })
-            ->whereNull('user_post_like.created_at')
-            ->orderBy('user_post.created_at', 'desc')
-            ->select('user_post.*')
-            ->first();
-
-        return ApiResponse::ok($post);
+        return ApiResponse::ok(UserPost::where("user_uuid", $user_token->user_uuid)->orderBy("created_at", "desc")->limit($limit)->get());
     }
 
     public function nextSlide(Request $request): Response

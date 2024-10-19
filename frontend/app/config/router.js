@@ -3,7 +3,6 @@ import { ExploreController } from "../pages/ExploreController.js";
 import { HomeController } from "../pages/HomeController.js";
 import { PostController } from "../pages/PostController.js";
 import { ProfileController } from "../pages/ProfileController.js";
-import { SlideController } from "../pages/SlideController.js";
 
 export const router = Router(
   [
@@ -16,11 +15,6 @@ export const router = Router(
       path: "/post/:post_uuid",
       controller: PostController,
       alias: "home",
-    },
-    {
-      path: "/slide",
-      controller: SlideController,
-      alias: "slide",
     },
     {
       path: "/explore",

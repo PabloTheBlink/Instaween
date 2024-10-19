@@ -24,11 +24,8 @@ return function (App $app) {
     $app->group("/post", function ($app) {
 
         $app->get("/feed", PostController::class . ":getFeed");
+        $app->get("/post", PostController::class . ":getMyPosts");
         $app->get("/post/{post_uuid}", PostController::class . ":getPost");
-
-        $app->get("/slide", PostController::class . ":getSlide");
-        $app->post("/slide", PostController::class . ":nextSlide");
-
         $app->post("/save", PostController::class . ":savePost");
 
     });

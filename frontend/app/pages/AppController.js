@@ -56,7 +56,7 @@ export const AppController = {
               <div style="flex: 1"></div>
               <a ${current_user.get() ? /* HTML */ `onclick="goTo('/profile/${current_user.get().user_uuid}')"` : ``} ${router.alias == "profile" ? " class='active'" : ""}>
                 <i class="fa fa-user"></i>
-                <span>Perfil</span>
+                <span>Mi perfil</span>
               </a>
             </div>
           </div>

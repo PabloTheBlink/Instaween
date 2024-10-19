@@ -6,10 +6,8 @@ import { getHeaders } from "./AuthService.js";
 const SERVICE_URL = `${API_URL}/cloudinary`;
 
 export function uploadImage(image) {
-  setLoading(true);
   return fetch(`${SERVICE_URL}/upload`, { headers: getHeaders(), method: "POST", body: JSON.stringify({ image }) })
     .then((r) => {
-      setLoading(false);
       if (!r.ok) {
         throw new Error(r.statusText);
       }

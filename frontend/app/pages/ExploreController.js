@@ -1,4 +1,5 @@
 import { Event } from "../../assets/js/EventJS.min.js";
+import { router } from "../config/router.js";
 import { getFeed } from "../services/PostService.js";
 
 export const ExploreController = {
@@ -10,6 +11,10 @@ export const ExploreController = {
         this.posts = posts;
         this.apply();
       });
+    };
+
+    this.openPost = function (post_uuid) {
+      router.navigate(`/post/${post_uuid}`);
     };
 
     const event = Event.listen("post", () => this.getFeed());
@@ -32,7 +37,7 @@ export const ExploreController = {
               ${this.posts
                 .map(
                   (post, index) => /* HTML */ `
-                    <div id="${post?.user_post_uuid || `post_${index}`}" class="post">
+                    <div ${post?.user_post_uuid ? `onclick="openPost('${post?.user_post_uuid}')"` : ``} id="${post?.user_post_uuid || `post_${index}`}" class="post">
                       <img lazy src="${post?.image || ""}" class="post-image" />
                     </div>
                   `
