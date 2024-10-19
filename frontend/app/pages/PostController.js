@@ -11,11 +11,11 @@ export const PostController = {
       });
     };
 
-    this.getPost();
+    if (!this.post) this.getPost();
   },
   render: function () {
     return /* HTML */ `
-      <div class="posts">
+      <div class="posts content-center">
         <div fadeIn id="${this.post?.user_post_uuid || `post_0`}" class="post">
           <img style="aspect-ratio: 3/4" lazy src="${this.post?.image || ""}" class="post-image" />
         </div>

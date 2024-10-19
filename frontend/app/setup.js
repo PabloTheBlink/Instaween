@@ -30,7 +30,7 @@ loadJS("./assets/js/three.min.js", () => {
       lowlightColor: 0x0,
       baseColor: 0x2f2f2f,
       blurFactor: 0.37,
-      speed: 0.6,
+      speed: 0.7,
       zoom: 1.6,
       minHeight: window.innerHeight,
       minWidth: window.innerWidth,
