@@ -14,7 +14,7 @@ export const router = Router(
     {
       path: "/post/:post_uuid",
       controller: PostController,
-      alias: "home",
+      alias: "post",
     },
     {
       path: "/explore",

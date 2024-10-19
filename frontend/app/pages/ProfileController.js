@@ -16,7 +16,10 @@ export const ProfileController = {
     };
 
     this.openPost = function (post_uuid) {
-      router.navigate(`/post/${post_uuid}`);
+      router.navigate(
+        `/post/${post_uuid}`,
+        this.posts.find((p) => p.user_post_uuid == post_uuid)
+      );
     };
 
     const event = Event.listen("post", () => this.getFeed());
@@ -29,55 +32,17 @@ export const ProfileController = {
   },
   render: function () {
     return /* HTML */ `
-      <style>
-        .user-header {
-          margin-top: 6rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 1rem;
-          background-color: rgba(255, 255, 255, 0.5);
-          border-radius: 1rem;
-          padding: 3rem 0;
-
-          .image {
-            width: 7rem;
-            height: 7rem;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            i {
-              font-size: 3rem;
-            }
-          }
-
-          span {
-            font-size: 1.5rem;
-            font-weight: bold;
-          }
-        }
-      </style>
-
-      <div class="user-header">
-        <div class="image"><i class="fa fa-user"></i></div>
-        <span>Mi perfil</span>
-      </div>
-
       ${!this.posts.length
-        ? /* HTML */ `<div class="content-center">
+        ? /* HTML */ `<div class="content-center" style="margin-top: 22rem">
             <i class="fa fa-sad-tear"></i>
             <span>No hay posts</span>
           </div>`
         : /* HTML */ `
-            <div class="posts-grid" style="padding-top: 2rem">
+            <div class="posts-grid" style="padding-top: 2rem; margin-top: 22rem">
               ${this.posts
                 .map(
                   (post, index) => /* HTML */ `
-                    <div ${post?.user_post_uuid ? `onclick="openPost('${post?.user_post_uuid}')"` : ``} id="${post?.user_post_uuid || `post_${index}`}" class="post">
+                    <div fadeIn ${post?.user_post_uuid ? `onclick="openPost('${post?.user_post_uuid}')"` : ``} id="${post?.user_post_uuid || `post_${index}`}" class="post">
                       <img lazy src="${post?.image || ""}" class="post-image" />
                     </div>
                   `
@@ -85,6 +50,11 @@ export const ProfileController = {
                 .join("")}
             </div>
           `}
+
+      <div class="user-header">
+        <div class="image"><i class="fa fa-user"></i></div>
+        <span>Mi perfil</span>
+      </div>
     `;
   },
 };

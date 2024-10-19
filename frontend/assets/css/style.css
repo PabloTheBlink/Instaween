@@ -288,6 +288,7 @@ canvas {
             border-radius: 1rem;
             overflow: hidden;
             z-index: 1;
+            position: relative;
 
             .post-image {
               width: 100%;
@@ -301,19 +302,15 @@ canvas {
               }
             }
 
-            .post-footer {
-              display: flex;
-              justify-content: space-around;
-              height: 3rem;
-              padding: 0 1rem;
-              background-color: var(--post-bg-color);
+            i {
+              position: absolute;
+              bottom: 1rem;
+              left: 1rem;
+              font-size: 1.5rem;
+              cursor: pointer;
 
-              button {
-                background: none;
-                border: none;
-                font-size: 1.1rem;
-                color: var(--button-color);
-                cursor: pointer;
+              &.active {
+                color: red;
               }
             }
           }
@@ -370,6 +367,40 @@ canvas {
         }
       }
     }
+  }
+}
+
+.user-header {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  padding: 3rem 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .image {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 3rem;
+    }
+  }
+
+  span {
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 }
 

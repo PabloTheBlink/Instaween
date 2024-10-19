@@ -14,7 +14,10 @@ export const ExploreController = {
     };
 
     this.openPost = function (post_uuid) {
-      router.navigate(`/post/${post_uuid}`);
+      router.navigate(
+        `/post/${post_uuid}`,
+        this.posts.find((p) => p.user_post_uuid == post_uuid)
+      );
     };
 
     const event = Event.listen("post", () => this.getFeed());
@@ -37,7 +40,7 @@ export const ExploreController = {
               ${this.posts
                 .map(
                   (post, index) => /* HTML */ `
-                    <div ${post?.user_post_uuid ? `onclick="openPost('${post?.user_post_uuid}')"` : ``} id="${post?.user_post_uuid || `post_${index}`}" class="post">
+                    <div fadeIn ${post?.user_post_uuid ? `onclick="openPost('${post?.user_post_uuid}')"` : ``} id="${post?.user_post_uuid || `post_${index}`}" class="post">
                       <img lazy src="${post?.image || ""}" class="post-image" />
                     </div>
                   `
